@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* Malgun Communication Web Standard Team Author KKS */
+html,body{-webkit-overflow-scrolling: touch;}
+/* Common */
+body,div,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,a,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'NotoSans', sans-serif;font-size:16px;line-height:1.4;color:#666;background:#fff;font-weight:300;letter-spacing:-.5px;-webkit-text-size-adjust:none}
+h1,h2,h3,h4,h5,h6{font-weight:normal}
+body{word-break:break-all}
+img,fieldset,iframe{border:0}
+img{max-width:100%;vertical-align:top}
+li{list-style:none}
+i,em,address{font-style:normal}
+input,button{vertical-align:middle;box-sizing:border-box}
+button{border:0;background:none;cursor:pointer}
+select{border: 0;}
+header,nav,main,footer,article{display: block;}
+/* Common Add */
+caption,legend,.blind{overflow:hidden;position:absolute;width:1px;height:1px;margin:-1px;clip:rect(0 0 0 0)}
+caption{position:static}
+button {outline:none}
+input[type=text],
+input[type=password]{-webkit-appearance:none}
+textarea{width:100%;font-size:12px;border-radius:2px;box-sizing:border-box;-webkit-appearance:none}
+table{width:100%;border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+hr{display:none}
+
+/* aline */
+.fl{float:left}
+.fr{float:right}
+.of_h:after{display:block;clear:both;content:''}
+.pr{position:relative}
+.tr{text-align:right}
+.tc{text-align:center}
+.tl{text-align:left}
+.pr{position:relative}
+.pa{position:absolute}
+.hide {display: none !important;}
+.tablet_br {display: none;}
+
+/* 글자 2줄만들기 */
+.wb{word-break:keep-all;word-wrap:break-word;white-space:pre-wrap;-webkit-hyphens:auto;-moz-hyphens:auto;hyphens:auto}
+/* 글자 여러줄 자르기 */
+.ellipsis_ver{overflow:hidden;text-overflow:ellipsis;-webkit-box-orient:vertical;word-wrap:break-word}
+.ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+
+/* link */
+a:link,a:visited{color:#222;text-decoration:none}
+a:active,a:hover,a:focus{text-decoration:none}
+::selection {background-color:#ed1b23;color: #fff}
+
+/* Skip Navigation */
+#u_skip{position:absolute;top:0;left:0;z-index:50;width:100%;height:0}
+#u_skip a{display:block;overflow:hidden;position:absolute;top:0;left:0;width:1px;height:1px;font-weight:normal;color:#fff;text-align:center;white-space:nowrap}
+#u_skip a:hover,#u_skip a:focus,#u_skip a:active{z-index:1000;width:100%;height:auto;padding:10px 0;background:#da291c;color:#fff}

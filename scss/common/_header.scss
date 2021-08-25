@@ -1,0 +1,188 @@
+@charset "UTF-8";
+@import '_variable';
+
+// 헤더
+#header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 50;
+	text-align: center;
+	transition: all ease-in-out .3s;
+
+	.logo {
+		position: absolute;
+		@include rem(top,33px);
+		@include rem(left,60px);
+
+		a {
+			display: block;
+			width: 166px;
+			height: 43px;
+			background-image: url(../img/pc/common/logo_white.png);
+		}
+	}
+
+	// 활성화
+	&.on {
+		background-color: #fff;
+
+		// 로고색상 변경
+		.logo {
+			a {
+				background-image: url(../img/pc/common/logo_red.png);
+			}
+		}
+	}
+
+	// 스크롤 시
+	&.scroll {
+		background-color: transparent;
+
+		.logo {
+			a {
+				background-image: url(../img/pc/common/logo_red.png);
+			}
+		}
+	}
+
+	.sub & {
+		&.on {
+			&:before {
+				position: absolute;
+				right: 0;
+				left: 0;
+				bottom: -1px;
+				height: 1px;
+				background-color: rgba(0,0,0,0.1) ;
+				content: '';
+			}
+		}
+	}
+}
+
+// 주메뉴 영역
+#gnb {
+	position: relative;
+	display: inline-block;
+	z-index: 3;
+}
+
+// 주메뉴 컨텐츠
+.list_gnb {
+	font-size: 0;
+	transition: all ease-in-out .5s;
+
+	> li {
+		position: relative;
+		display: inline-block;
+
+		> a {
+			position: relative;
+			display: block;
+			@include rem(padding,0 29px);
+			color: #fff;
+		}
+
+		.name_gnb {
+			position: relative;
+			display: block;
+			@include rem(padding,36px 0 37px);
+			@include rem(font-size,18px);
+		}
+
+		// 메뉴 활성화
+		&.on {
+			// 글씨 포인터 처리
+			.name_gnb {
+				&:after {
+					position: absolute;
+					right: 0;
+					bottom: -1px;
+					left: 0;
+					z-index: 5;
+					height: 2px;
+					background-color: $point_red;
+					content: '';
+				}
+			}
+		}
+	}
+
+	&.on {
+		> li {
+			> a {
+				color: #222;
+			}
+		}
+	}
+
+	&.scroll {
+		transform: translateX(150px);
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.gnb_depth {
+	display: none;
+	position: absolute;
+	top: 100%;
+	@include rem(left,29px);
+	z-index: 3;
+	white-space: nowrap;
+
+	> li {
+		display: inline-block;
+		@include rem(font-size,16px);
+
+		+li{
+			@include rem(margin-left,50px);
+		}
+
+		> a {
+			display: block;
+			@include rem(padding,17px 0);
+			color: #666;
+
+			&:hover,
+			&:focus {
+				color: $point_red;
+			}
+		}
+	}
+
+	&.depth_last {
+		@include rem(right,31px);
+		left: auto;
+	}
+}
+
+// 2뎁스 bg 영역
+.depth_bg {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	left: 0;
+	height: 0;
+	background-color: #fff;
+	opacity: 0;
+	transition: all ease-in-out .2s;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.05);
+
+	&:before {
+		position: absolute;
+		right: 0;
+		left: 0;
+		top: 0;
+		height: 1px;
+		background-color: rgba(0,0,0,0.1) ;
+		content: '';
+	}
+
+	&.on {
+		opacity: 1;
+		@include rem(height,56px);
+	}
+}

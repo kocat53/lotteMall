@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import 'common/_variable';
+@import 'mixin/_mixin';
+
+
+// 마우스
+@keyframes moveMouse{
+	0% {transform: translateY(0);}
+	25%{transform: translateY(-5px);}
+	100% {transform: translateY(0);}
+}
+
+// 왼 > 오
+@keyframes leftRight{
+	0% {
+		opacity: 0;
+		transform: translateX(-20%)
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0)
+	}
+}
+
+// 아 > 위
+@keyframes bottomTop{
+	0% {
+		opacity: 0;
+		transform: translateY(30%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0)
+	}
+}
+
+@keyframes mouseWheel{
+    60% {
+        top: 20px;
+        opacity: 0;
+    }
+
+    100% {
+        top: 18px;
+        opacity: 0;
+    }
+}
+
+@keyframes mainIntroBanner{
+	to {
+		right: $sideWidth;
+	}
+}
+
+@keyframes mainNav{
+	0% {
+		transform: translateX(-200%);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}

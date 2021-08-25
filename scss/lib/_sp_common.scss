@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+// how to use : Use following mixins.
+// variable : [X-axis] [Y-axis] [offset_x] [offset_y] [width] [height] [total_width] [total_height] [image_url] [image_name] [folder_name]
+$common-footer_logo: 0px 67px 0px -67px 282px 63px 408px 278px '../img/m/sp_common.png' 'common-footer_logo' 'sp_common';
+$common-ico_close_fff_42x42: 350px 76px -350px -76px 42px 42px 408px 278px '../img/m/sp_common.png' 'common-ico_close_fff_42x42' 'sp_common';
+$common-ico_floor: 0px 140px 0px -140px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-ico_floor' 'sp_common';
+$common-ico_parking: 74px 140px -74px -140px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-ico_parking' 'sp_common';
+$common-ico_pointer: 350px 0px -350px 0px 58px 66px 408px 278px '../img/m/sp_common.png' 'common-ico_pointer' 'sp_common';
+$common-ico_round_arrow_black: 350px 128px -350px -128px 27px 27px 408px 278px '../img/m/sp_common.png' 'common-ico_round_arrow_black' 'sp_common';
+$common-ico_share: 0px 214px 0px -214px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-ico_share' 'sp_common';
+$common-logo: 0px 0px 0px 0px 340px 57px 408px 278px '../img/m/sp_common.png' 'common-logo' 'sp_common';
+$common-sns_blog: 222px 140px -222px -140px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-sns_blog' 'sp_common';
+$common-sns_fb: 148px 140px -148px -140px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-sns_fb' 'sp_common';
+$common-sns_insta: 74px 214px -74px -214px 64px 64px 408px 278px '../img/m/sp_common.png' 'common-sns_insta' 'sp_common';
+
+//ancestor
+$sp_common-width: 408px;
+$sp_common-height: 278px;
+$sp_common-image: '../img/m/sp_common.png';
+$sp_common-sprites: ($common-footer_logo, $common-ico_close_fff_42x42, $common-ico_floor, $common-ico_parking, $common-ico_pointer, $common-ico_round_arrow_black, $common-ico_share, $common-logo, $common-sns_blog, $common-sns_fb, $common-sns_insta, );
+$sp_common_sprites_name: (common-footer_logo, common-ico_close_fff_42x42, common-ico_floor, common-ico_parking, common-ico_pointer, common-ico_round_arrow_black, common-ico_share, common-logo, common-sns_blog, common-sns_fb, common-sns_insta, );
+$sp_common: (408px, 278px, '../img/m/sp_common.png', $sp_common-sprites, );
+
+//mixin
+@mixin sp_common_img() {
+	background-image: url(../img/m/sp_common.png);
+	$sprite-background-size-x: 408px / 2;
+	$sprite-background-size-y: 278px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+}
+
+@mixin sp_common($sprite) {
+	background-image: url(../img/m/sp_common.png);
+	$sprite-background-size-x: 408px / 2;
+	$sprite-background-size-y: 278px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+	@include spriteSize($sprite);
+	@include spriteBackgroundPosition($sprite);
+}
+
+@mixin sp_common_size($sprite) {
+	@include spriteSize($sprite);
+	@include spriteBackgroundPosition($sprite);
+}
+
+@mixin sp_common_on($sprite) {
+	background-image: url(../img/m/sp_common.png);
+	$sprite-background-size-x: 408px / 2;
+	$sprite-background-size-y: 278px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+	@include spriteBackgroundPosition($sprite);
+}

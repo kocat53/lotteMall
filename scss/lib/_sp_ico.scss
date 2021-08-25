@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+// how to use : Use following mixins.
+// variable : [X-axis] [Y-axis] [offset_x] [offset_y] [width] [height] [total_width] [total_height] [image_url] [image_name] [folder_name]
+$ico-arrow_left_40x74: 0px 0px 0px 0px 40px 74px 90px 74px '../img/m/sp_ico.png' 'ico-arrow_left_40x74' 'sp_ico';
+$ico-arrow_right_40x74: 50px 0px -50px 0px 40px 74px 90px 74px '../img/m/sp_ico.png' 'ico-arrow_right_40x74' 'sp_ico';
+
+//ancestor
+$sp_ico-width: 90px;
+$sp_ico-height: 74px;
+$sp_ico-image: '../img/m/sp_ico.png';
+$sp_ico-sprites: ($ico-arrow_left_40x74, $ico-arrow_right_40x74, );
+$sp_ico_sprites_name: (ico-arrow_left_40x74, ico-arrow_right_40x74, );
+$sp_ico: (90px, 74px, '../img/m/sp_ico.png', $sp_ico-sprites, );
+
+//mixin
+@mixin sp_ico_img() {
+	background-image: url(../img/m/sp_ico.png);
+	$sprite-background-size-x: 90px / 2;
+	$sprite-background-size-y: 74px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+}
+
+@mixin sp_ico($sprite) {
+	background-image: url(../img/m/sp_ico.png);
+	$sprite-background-size-x: 90px / 2;
+	$sprite-background-size-y: 74px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+	@include spriteSize($sprite);
+	@include spriteBackgroundPosition($sprite);
+}
+
+@mixin sp_ico_size($sprite) {
+	@include spriteSize($sprite);
+	@include spriteBackgroundPosition($sprite);
+}
+
+@mixin sp_ico_on($sprite) {
+	background-image: url(../img/m/sp_ico.png);
+	$sprite-background-size-x: 90px / 2;
+	$sprite-background-size-y: 74px / 2;
+	-webkit-background-size: $sprite-background-size-x $sprite-background-size-y;
+	background-size: $sprite-background-size-x $sprite-background-size-y;
+	@include spriteBackgroundPosition($sprite);
+}

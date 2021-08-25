@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/*! Nanum Barun Gothic (Korean) http://hangeul.naver.com */
+
+@font-face {
+	font-family:"NotoSans";
+	src:url("../font/NotoSans-Light.woff2") format("woff2");
+	src:url("../font/NotoSans-Light.woff");
+	font-style:normal;
+	font-weight:200
+}
+@font-face {
+	font-family:"NotoSans";
+	src:url("../font/NotoSans-DemiLight.woff2") format("woff2");
+	src:url("../font/NotoSans-DemiLight.woff");
+	font-style:normal;
+	font-weight:300
+}
+@font-face {
+	font-family:"NotoSans";
+	src:url("../font/NotoSans-Regular.woff2") format("woff2");
+	src:url("../font/NotoSans-Regular.woff");
+	font-style:normal;
+	font-weight:400
+}
+@font-face {
+	font-family:"NotoSans";
+	src:url("../font/NotoSans-Medium.woff2") format("woff2");
+	src:url("../font/NotoSans-Medium.woff");
+	font-style:normal;
+	font-weight:500
+}
+@font-face {
+	font-family:"NotoSans";
+	src:url("../font/NotoSansKR-Bold.woff2") format("woff2");
+	src:url("../font/NotoSansKR-Bold.woff");
+	font-style:normal;
+	font-weight:700
+}
+@font-face {
+	font-family:"Roboto";
+	src:url("../font/Roboto-Light.woff2") format("woff2");
+	src:url("../font/Roboto-Light.woff");
+	font-style:normal;
+	font-weight:300
+}
+@font-face {
+	font-family:"Roboto";
+	src:url("../font/Roboto-Regular.woff2") format("woff2");
+	src:url("../font/Roboto-Regular.woff");
+	font-style:normal;
+	font-weight:400
+}
+@font-face {
+	font-family:"Roboto";
+	src:url("../font/Roboto-Medium.woff2") format("woff2");
+	src:url("../font/Roboto-Medium.woff");
+	font-style:normal;
+	font-weight:500
+}
+@font-face {
+	font-family:"Roboto";
+	src:url("../font/Roboto-Bold.woff2") format("woff2");
+	src:url("../font/Roboto-Bold.woff");
+	font-style:normal;
+	font-weight:700
+}
+
+/* REM 기준 */
+
+/* Mobile */
+@media screen and (max-width:1400px){
+html{font-size:13px}}
+@media screen and (max-width:1024px){
+html{font-size:12.5px}}
+@media screen and (max-width:960px){
+html{font-size:12.25px}}
+@media screen and (max-width:910px){
+html{font-size:12px}}

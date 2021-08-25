@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--[if IE 7]><html lang="ko" class="ie7"><![endif]-->
+<!--[if IE 8]><html lang="ko" class="ie8"><![endif]-->
+<!--[if IE 9]><html lang="ko" class="ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="ko">
+<!--<![endif]-->
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="utf-8">
+	<title> </title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta property="og:title" content="">
+	<meta property="og:url" content="">
+	<meta property="og:image" content="">
+	<meta property="og:description" content="">
+	<link href="../css/font.css" type="text/css" rel="stylesheet">
+	<link href="../css/reset.css" type="text/css" rel="stylesheet">
+	<link href="../css/common.css" type="text/css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" type="text/css" rel="stylesheet">
+	<style>
+	@charset "UTF-8";
+
+	.pp #content #largeA{position:relative;height:100%;width:1200px}
+	.pp #content #largeA img{position:absolute}
+	.pp #content #smallA{margin:20px;position:relative;width:300px}
+	.pp #content #smallA img{width:100%}
+	.pp #content #normal{margin:20px;position:relative;width:1200px;overflow:hidden}
+	.pp #content .pointer{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 32px;
+    background: url(../img/pc/ico_point.png) no-repeat;
+    background-size: 100%;}
+	.pp #content .viewArea2{margin:20px;overflow:hidden;width:1200px;height:720px}
+	.pp #content .viewArea3{display:block}
+	.tagArea{position:absolute;right:20px;top:70px}
+
+	#largeA{-webkit-transform:none;-ms-transform:none;transform:none;-webkit-transform-origin:top left;-ms-transform-origin:top left;transform-origin:top left}
+
+   img {max-width: initial} 
+	 #smallA .pointer {background-size: 70%!important}
+	</style>
+</head>
+
+<body>
+	<!--[if lte IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p><![endif]-->
+	<div id="wrap">
+		<header class="sticky" id="header">
+			<!-- header include -->
+	
+			<div class="header_content sticky">
+	
+			</div><!-- header include -->
+		</header>
+		<div class="ui buttons">
+				<button class="ui button b1">B1</button>
+				<button class="ui button f1">1F</button>
+				<button class="ui button f2">2F</button>
+				<button class="ui button f3">3F</button>
+				<button class="ui button f4">4F</button>
+		</div>
+
+		<div class="pp">
+			<div id="container">
+					<div class="ui segment">
+							<div class="ui form">
+									<div class="three fields">
+										<div class="field">
+											<label>Top</label>
+											<input type="text" placeholder="Top" class="mapTop">
+										</div>
+										<div class="field">
+											<label>Left</label>
+											<input type="text" placeholder="Left" class="mapLeft">
+											<input type="text" placeholder="area" class="area">
+										</div>
+									</div>
+								</div>
+								<div class="ui ignored warning icon message">
+										<i class="warning icon"></i>
+										<div class="content">
+											<table>
+													<tr>
+															<td class="mapTop">12312</td>
+															<td class="mapLeft">123123</td>
+													</tr>
+											</table>
+										</div>
+										<div class="ui buttons">
+												<button class="ui button copy">copy</button>
+										</div>
+								</div>
+					</div>
+				
+				<div id="content" role="main">
+					<div class="viewArea3">
+						<div id="smallA">
+								<img src="../img/pc/map_2400_1F.svg" class="mini" alt="Breaking Borders Logo" width="300">
+
+						</div>
+					</div>
+					<div class="viewArea1">
+						<div id="normal">
+							<img src="../img/pc/map_2400_1F.svg" class="basic" alt="Breaking Borders Logo" width="1200">
+						</div>
+					</div>
+					
+					<div class="viewArea2">
+						<div id="largeA">
+								<img src="../img/pc/map_2400_1F.svg" class="ori" alt="Breaking Borders Logo" width="2400">
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</div>
+		
+	</div>
+
+
+	<div class="dimm">
+		<img src="../../images/common/blank_size_100.png" alt="" />
+	</div>
+	<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jquery-ui.min.js"></script>
+	<script src="../js/map.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script src="../js/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		
+			$(function(){
+				
+				$('.ui.button').on('click',function(){
+
+					if($(this).hasClass('b1')){
+						$('#content img').attr('src','../img/pc/map_2400_B1F.svg')
+					}
+					if($(this).hasClass('f1')){
+						$('#content img').attr('src','../img/pc/map_2400_1F.svg')
+					}
+					if($(this).hasClass('f2')){
+						$('#content img').attr('src','../img/pc/map_2400_2F.svg')
+					}
+					if($(this).hasClass('f3')){
+						$('#content img').attr('src','../img/pc/map_2400_3F.svg')
+					}
+					if($(this).hasClass('f4')){
+						$('#content img').attr('src','../img/pc/map_2400_4F.svg')
+					}
+					if($(this).hasClass('copy')){
+						$('.area').val($('.content').html())
+						$('.area').select();
+						 document.execCommand("copy");
+						 alert('복사 되었다 이놈아 ')
+					}
+
+				})
+
+			})
+			
+			</script>
+</body>
+
+</html>

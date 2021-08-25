@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@mixin ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+@mixin rem($property, $values) {
+	$base-font-size: 16px ;
+	$px-values: ();
+	$rem-values: ();
+
+	@each $value in $values {
+		@if $value == 0 or $value == 0px {
+			$px-values: join($px-values, 0); // 0 px를  0으로 뱉어주기 위해 0과 join(합침)
+			$rem-values: join($rem-values, 0);
+			// 타입이 넘버와 같거나  값이 px가 붙어있거나 밸류의 뒤에붙는 유닛 값이 px 일 경우
+		} @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+			$new-rem-value: $value / $base-font-size;
+			$px-values: join($px-values, round($value));
+			$rem-values: join($rem-values, #{$new-rem-value}rem);
+		} @else {
+			$px-values: join($px-values, round($value * $base-font-size));
+			$rem-values: join($rem-values, #{$value}rem);
+		}
+	}
+	#{$property}: $px-values;
+	#{$property}: $rem-values;
+}
+
+@mixin morem($target, $values) {
+	$base-font-size: 13px ;
+	$px-values: ();
+	$rem-values: ();
+
+	@each $value in $values {
+		@if $value == 0 or $value == 0px {
+			$px-values: join($px-values, 0);
+			$rem-values: join($rem-values, 0);
+		} @else if type-of($value) == number and not unitless($value) and (unit($value) == px) {
+			$new-rem-value: $value / $base-font-size;
+			$px-values: join($px-values, round($value));
+			$rem-values: join($rem-values, #{$new-rem-value}rem);
+		} @else {
+			$px-values: join($px-values, round($value * $base-font-size));
+			$rem-values: join($rem-values, #{$value}rem);
+		}
+	}
+	#{$target}: $px-values;
+	#{$target}: $rem-values;
+}
+
+// 미디어 쿼리
+@mixin media($size) {
+	@if $size == pc {
+		@media all and (max-width: 1400px){ @content; }
+	} @else if $size == mobile {
+		@media all and (max-width: 1023px){ @content; }
+	} @else if $size == tablet {
+		@media all and (min-width:768px) and (max-width: 1023px) { @content; }
+	} @else if $size == phone {
+		@media all and (max-width:767px) { @content; }
+	} @else if $size == mini {
+		@media all and (max-width: 320px){ @content; }
+	} 
+}

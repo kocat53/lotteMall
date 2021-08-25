@@ -1,0 +1,647 @@
+@charset "UTF-8";
+@import '_variable';
+
+#sidebar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 51;
+	width: $sideWidth;
+	height: 100%;
+	background-color: #fff;
+	text-align: center;
+
+	// 좌측라인
+	&:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 1px;
+		background-color: rgba(0,0,0,0.08);
+		content: '';
+	}
+
+	> .inner {
+		display: flex;
+		height: 100%;
+		flex-direction: column;
+	}
+}
+
+// 로고 & 버튼
+.top_btn_area {
+	flex: 0 0 auto;
+	overflow: hidden;
+	text-align: center;
+
+	> .inner {
+		display: inline-block;
+		position: relative;
+		width: 36px;
+		height: 36px;
+		overflow: hidden;
+		@include rem(margin-top,23px);
+	}
+
+	// 스크롤 되면 버튼으로 변경
+	&.scroll {
+		.el_lotte_ci{
+			transform: translateX(120%);
+		}
+
+		.btn_side_menu {
+			left: 0;
+		}
+	}
+}
+
+// 롯데 로고
+.el_lotte_ci {
+	display: inline-block;
+	width: 33px;
+	height: 33px;
+	background: url(../img/pc/sprite.png);
+	transition: all ease-in-out .5s;
+}
+
+// 사이드메뉴 - 햄버거
+.btn_side_menu {
+	position: absolute;
+	top: 7px;
+	left: -120%;
+	width: 100%;
+	margin-right: -3px;
+	transition: all ease-in-out .5s;
+
+	// 클릭시 X모양으로 변경
+	&.on {
+		.meun_hambuger {
+			.top_line,
+			.bottom_line {
+				width: 120%;
+			}
+
+			&:before {
+				transform: rotate(45deg) translate(2px, -1px);
+			}
+	
+			&:after {
+				transform: rotate(-45deg) translate(0, 3px);
+			}
+		}
+
+		.center_line {
+			opacity: 0;
+			transform: translate(50px,0) scale(0);
+		}
+	}
+}
+
+// 사이드메뉴 - 위젯영역
+.box_side_menu {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+// 사이드메뉴 위젯 리스트
+.list_side_menu {
+	padding: 10px 0;
+
+	> li {
+		line-height: 1.1;
+		transition: all ease-in-out .5s;
+
+		.side_icon_wrap {
+			position: relative;
+		}
+
+		// 간격설정
+		+ li {
+			margin-top: 4.8vh
+		}
+	}
+
+	// 사이드 메뉴  아이콘 메뉴
+	.ico_side_menu {
+		display: inline-block;
+		background-repeat: no-repeat;
+		background: url(../img/pc/sprite.png);
+		width: 32px;
+		height: 32px;
+
+		&.ico_floor {
+			background-position: -45px 0;
+		}
+
+		&.ico_map {
+			height: 34px;
+			background-position: -90px 0;
+		}
+
+		&.ico_park {
+			background-position: -135px 0;
+		}
+
+		&.ico_share {
+			background-position: -180px 0;
+		}
+
+		&.ico_insta {
+			background-position: -225px 0;
+		}
+
+		&.ico_blog {
+			background-position: -270px 0;
+		}
+
+		&.ico_facebook {
+			background-position: -315px 0;
+		}
+
+		&.on,
+		&:hover {
+			background-position-y: -45px; 
+
+			& + .tooltip_side_menu {
+				opacity: 1;
+				visibility: visible;
+				right: 100%;
+			}
+		}
+	}
+
+	// 툴팁
+	.tooltip_side_menu {
+		position: absolute;
+		top: 0;
+		right: 130%;
+		margin-right: 35px;
+		background-color: $point_red;
+		white-space: nowrap;
+		border-radius: 15px;
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease-in-out .3s;
+
+		> p {
+			position: relative;
+			padding: 9px 20px;
+			@include rem(font-size,12px);
+			font-weight: 200;
+			color: #fff;
+			letter-spacing: 0;
+
+			&:before {
+				display: inline-block;
+				width: 15px;
+				height: 14px;
+				margin: -2px 10px 0 0;
+				background: url(../img/pc/sprite.png) no-repeat;
+				background-position: 0 -45px;
+				vertical-align: middle;
+				content: '';
+			}
+			
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 99%;
+				margin-top: -6px;
+				border-style: solid;
+				border-width: 6px 0 6px 10px;
+				border-color: transparent transparent transparent $point_red;
+				content: '';
+			}
+		}
+	}
+}
+
+// SNS 제외한 아이콘버튼
+.list_side_basic {
+	position: relative;
+
+	&.on {
+		> li {
+			&:not(:last-child){
+				opacity: 0;
+				visibility: hidden;
+				transform: translateX(-30px);
+			}
+			
+		}
+	}
+
+	> li {
+		&:not(:last-child){
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+	}
+}
+
+// SNS 목록(숨겨져있음)
+.list_slide_sns {
+	z-index: -1;
+	position: absolute;
+	top: 0;
+
+	> li {
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(30px);
+
+		+ li {
+			margin-top: 5.1vh;
+		}
+	}
+
+	&.on {
+		z-index: 1;
+		> li {
+			opacity: 1;
+			visibility: visible;
+			transform: translateX(0);
+		}
+	}
+
+	.tooltip_side_menu {
+		> p {
+			&:before {
+				display: none;
+			}
+		}
+	}
+}
+
+// 사이드메뉴 - 지점 영역
+.box_market_list {
+	position: relative;
+	flex: 2 0 auto;
+	background-color: $point_red;
+	max-height: 540px;
+}
+
+// 사이드메뉴 - 지점 이름 영역
+.list_markt_info {
+    display: flex;
+    flex-direction: row-reverse;
+	height: 100%;
+	word-break: keep-all;
+	
+	// 다른 지점 영역
+	&.type_accodion {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		z-index: -9999;
+		right: -365%;
+		transition: all .9s cubic-bezier(0.165, 0.84, 0.44, 1);
+		box-shadow: -1px -1px 15px rgba(0,0,0,0.09);
+
+		> li {
+			&.first {
+				width: 0;
+
+				&.active {
+					@include rem(width,350px);
+				}
+			}
+		}
+
+		&.before {
+			box-shadow: none;
+		}
+
+		&.on {
+			@include rem(right,-421px);
+		}
+	}
+
+	> li {
+		display: inline-flex;
+		flex: 0 0 auto;
+		flex-direction: row-reverse;
+		box-sizing: border-box;
+		width: 70px;
+		transition: all .9s cubic-bezier(0.165, 0.84, 0.44, 1);
+		overflow: hidden;
+
+		+ li {
+			position: relative;
+			border-right: 1px solid #ddd;
+		}
+
+		// 해당 사이트의 메뉴만
+		&.first{
+			.wrap_market_name {
+				background-color: $point_red;
+			}
+
+			.title_open_time {
+				background-color: #fff;
+				color: $point_red;
+			}
+
+			.wrap_market_info {
+				flex: 1 0 auto;
+				background-color: $point_red;
+				color: #fff;
+			}
+
+			.info_open_day {
+				&:after {
+					background-color: #fff;
+				}
+			}
+			
+			// 지점명
+			.title_market {
+				color: #fff;
+			}
+
+			//더보기
+			.btn_market_more {
+				&:before,
+				&:after {
+					background-color: #fff;
+				}
+			}
+		}
+
+		&.active {
+			@include rem(width,420px);
+		}
+	}
+
+	.wrap_market_name {
+		width: 70px;
+		flex: 1 0 70px;
+		position: relative;
+		background-color: #fff;
+	}
+
+	.title_market {
+		display: inline-block;
+		margin-top: 38px;
+		@include rem(font-size,18px);
+		font-weight: 400;
+		color: $point_red;
+		line-height: 1.1;
+	}
+
+	.btn_market_more {
+		position: absolute;
+		bottom: 41px;
+		left: 0;
+		right: 0;
+		width: 26px;
+		height: 26px;
+		margin: 0 auto;
+		text-align: center;
+
+		&:before,
+		&:after {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			left: 0;
+			height: 2px;
+			background-color: $point_red;
+			content: '';
+		}
+
+		&:after {
+			transform: rotate(90deg);
+			transition: all ease-in-out .2s;
+		}
+
+		&.on {
+			&:after {
+				transform: rotate(0);
+			}
+		}
+	}
+}
+
+// 사이드메뉴 -  정보 영역
+.wrap_market_info {
+	flex: 1 0 auto;
+	@include rem(width,350px);
+	@include rem(padding,35px 60px);
+	border-right: 1px solid #f0535a;
+	background-color: #fff;
+	color: $point_red;
+	text-align: left;
+	box-sizing: border-box;
+
+	.lotte_name {
+		text-transform: capitalize ;
+		font-weight: 300;
+	}
+
+	// 지점 이름
+	.name_market {
+		display: block;
+		@include rem(margin-top,7px);
+		@include rem(font-size,28px);
+	}
+
+	// 영업일
+	.info_open_day {
+		position: relative;
+		@include rem(margin-top,34px);
+		@include rem(padding-top,29px);
+		font-family: 'Roboto';
+		@include rem(font-size,40px);
+		font-weight: 300;
+
+		&:after {
+			position: absolute;
+			top:0;
+			right: 0;
+			left: 0;
+			height: 2px;
+			background-color: $point_red;
+			content: '';
+		}
+
+		.data_day {
+			display: inline-block;
+			vertical-align: middle;
+			margin-top: -4px;
+			@include rem(font-size,24px);
+		}
+
+		.desc_txt {
+			font-family: 'NotoSans';
+			@include rem(margin-top,3px);
+			@include rem(font-size,16px);
+		}
+	}
+}
+
+// 오픈시간
+.wrap_open_time {
+	@include rem(margin-top,39px);
+
+	.title_open_time {
+		display: block;
+		@include rem(padding,9px 0);
+		background-color: $point_red;
+		color: #fff;
+		font-weight: 300;
+	}
+
+	// 운영시간 리스트
+	.list_open_time {
+		@include rem(margin-top,13px);
+
+		> li {
+			display: flex;
+			align-items: baseline;
+
+			+ li {
+				@include rem(margin-top,16px);
+			}
+
+			> strong,
+			> p {
+				font-weight: 300;
+			}
+
+			> strong {
+				flex: 1 1 34px;
+				@include rem(padding-right,15px);
+			}
+
+			> p {
+				flex: 1 0 auto;
+				font-family: 'Roboto';
+				letter-spacing: -0.8px;
+
+				> span {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	.link_visit_site {
+		position: relative;
+		display: inline-block;
+		@include rem(margin-top,44px);
+		padding-right: 36px;
+		padding-bottom: 4px;
+		border-bottom: 1px solid $point_red;
+		@include rem(font-size,14px);
+		font-weight: 300;
+		color: $point_red;
+
+		&:before {
+			position: absolute;
+			top: 50%;
+			right: 0;
+			width: 16px;
+			height: 16px;
+			margin-top: -11px;
+			background: url(../img/pc/sprite.png) no-repeat 0 -60px;
+			content: '';
+		}
+	}
+}
+
+// 사이드 주메뉴
+.fixed_lnb {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 51;
+	width: 50%;
+	background-color: #fff;
+	transform: translateX(140%);
+	transition: all ease-in-out .8s;
+
+	&.on {
+		transform: translateX(0);
+	}
+
+	.btn_side_menu {
+		top: 36px;
+		right: 22px;
+		width: 26px;
+		left: inherit;
+	}
+}
+
+// lnb 메뉴 목록
+.list_lnb {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+
+	> li {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		flex: 1 0 auto;
+		@include rem(padding-left,80px);
+
+		> a {
+			margin-right: auto;
+		}
+
+		+ li {
+			border-top: 1px solid #ededed;
+		}
+
+		&:hover {
+			background-color: #fafafa;
+		}
+	}
+
+	.name_lnb {
+		@include rem(font-size,40px);
+		font-weight: 600;
+		color: #333;
+	}
+
+	.lnb_depth {
+		@include rem(margin-top,20px);
+
+		&:after{
+			display: block;
+			clear: both;
+			content: '';
+		}
+
+		> li {
+			float: left;
+
+			> a {
+				@include rem(font-size,18px);
+				color: #666;
+
+				&:hover,
+				&:focus {
+					color: $point_red;
+				}
+			}
+
+			+ li {
+				@include rem(margin-left,50px);
+			}
+		}
+	}
+}
+
+@media screen and (max-width:1400px){
+	.wrap_market_info {
+		@include rem(padding,35px 40px);
+	}
+}

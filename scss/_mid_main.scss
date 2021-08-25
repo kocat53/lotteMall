@@ -1,0 +1,616 @@
+@charset "UTF-8";
+
+//  기타
+@media all and (max-width: 1200px) {
+	// 컨테이너
+	#container  {
+		.content_inner  {
+			@include rem(margin,0 120px 0 50px);
+			@include rem(padding-top,30px);
+		}
+	}
+}
+
+
+// PC를 벗어난 모바일 진입구간
+@include media(mobile){
+	#wrap {
+		overflow: hidden;
+	}
+
+	// 메인 컨텐츠 영역
+	#container {
+		.section {
+			height: 100% !important;
+			overflow: visible;
+			@include morem(padding,40px 0);
+
+			.fp-tableCell {
+				height: inherit !important;
+			}
+		}
+
+		.main_bg_motion {
+			> div {
+				background-position: 30% top;
+			}
+		}
+
+		.content_inner {
+			@include morem(margin,0 30px 0 35px);
+			padding: 0 !important;
+		}
+	}
+
+	//  공통
+	.content_title_box {
+		color: #222;
+	
+		// LOTTE MALL
+		.name_lotte_mall {
+			@include morem(font-size,15px);
+			transform: translateX(0);
+		}
+	
+		// 영어 부분
+		.title_main_contnet {
+			@include morem(font-size,47px);
+			line-height: 1.15;
+			word-break: break-word;
+
+			.main_mart_box  & {
+				letter-spacing: 0;
+				text-indent: 0;
+			}
+
+			.cinema_info_area  & {
+				text-indent: -1px;
+			}
+		}
+	
+		// 한글 굵은 텍스트
+		.desc_title {
+			@include morem(font-size,17px);
+		}
+	
+		// 설명
+		.desc_text {
+			@include morem(margin-top,1px);
+			@include morem(font-size,15px);
+			word-break: keep-all;
+			word-wrap: break-word;
+		}
+	
+		// 더보기
+		.go_content {
+			position: relative;
+			right: initial;
+			top: initial;
+			@include morem(width,180px);
+			@include morem(margin-top,22px);
+			margin-right: auto;
+			@include morem(padding,10px 20px 11px);
+			@include morem(font-size,12px);
+
+			&:after {
+				@include rem(right,20px);
+			}
+	
+			&:hover:after,
+			&:focus:after {
+				@include rem(right,10px);
+			}
+
+			.main_mart_box  & {
+				@include morem(margin-bottom,75px);
+			}
+
+			.content_cinema & {
+				@include morem(margin-bottom,75px);
+			}
+		}
+	
+		// 화살표 있는 라운드형 타입 [보관]
+		// .go_content_round {
+		// 	position: relative;
+		// 	right: auto;
+		// 	display: block;
+		// 	height: auto;
+		// 	@include morem(width,50px);
+		// 	margin-left: auto;
+		// 	@include morem(padding,25px 0);
+		// 	border: 0;
+
+		// 	&:after {
+		// 		border-left-width:10px;
+		// 		border-top-width:4px;
+		// 		margin-top: -3px;
+		// 	}
+		// }
+	}
+
+	// 최상단 메인
+	.main_top_banner {
+		&.type_intro {
+			display: none;
+		}
+
+		&.type_slider  {
+			position: static;
+			width: 100%;
+			@include morem(margin-top,37px);
+
+			.pager_slider {
+				position: static;
+				@include morem(margin-top,25px);
+				text-align: center;
+
+				> .pager_bullet {
+					display: inline-block;
+					vertical-align: middle;
+
+					+.pager_bullet {
+						margin-top: 0;
+						margin-left: 7px;
+					}
+				}
+			}
+		}
+	}
+
+	// 최상단 - 텍스트
+	.main_text_area  {
+		@include morem(padding-left,35px);
+
+		.desc_sub_text {
+			@include morem(font-size,15px);
+		}
+
+		.text_big_sub {
+			@include morem(font-size,37px);
+		}
+	}
+	
+	.main1_content_box {
+		margin-left: auto;
+	}
+
+	// 최상단 - 슬라이드
+	.main_top_banner  {
+		// 최상단 - 슬라이더 ,
+		.info_top_banner {
+			@include morem(padding,17px 23px);
+
+			.name_banner {
+				@include morem(font-size,17px);
+			}
+
+			.day_info_banner {
+				@include morem(left,25px);
+				@include morem(font-size,13px);
+			}
+		}
+	}
+
+	// 공지사항
+	.main_notice_area {
+		display: flex;
+		align-items:baseline;
+		@include morem(padding-left,35px);
+
+		// 노티쓰
+		.title_main_notice {
+			flex: 1 0 auto;
+			@include morem(margin-right,20px);
+		}
+
+		// 목록
+		.main_notice_wrap {
+			flex:  2 0 auto;
+			height: 24px;
+			margin-top: 0;
+		}
+	}
+
+	.list_main_notice {
+		@include morem(padding-right,35px);
+
+		> li {
+			> a {
+				width: 100%;
+			}
+
+			.ico_notice_arrow {
+				align-self: center;
+			}
+		}
+	}
+
+	// Mall
+	.section_mall  {
+		border-bottom: 0;
+		padding-bottom: 0 !important;
+
+		// 운영시간 및 이미지 부분
+		.info_img_wrap {
+			width: 90vw;
+			position: relative;
+			display: flex;
+			justify-content: flex-start;
+			flex-direction: column;
+			align-items: flex-start;
+			@include morem(margin,90px 0 45px 0);
+			margin-left: auto;
+			box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.3);
+		}
+
+		// 텍스트 및 설명영역
+		.main_mall_box {
+			margin-bottom: 0;
+		}
+
+		// 꾸밈 요소들
+		.info_market_time,
+		.section2_img {
+			position: static;
+		}
+
+		// 롯데모로 텍스트
+		.section2_lottemall {
+			bottom: 100%;
+			@include morem(left,-35px);
+			order: -100;
+			text-align: right;
+			font-size: 12vh;
+			white-space: nowrap;
+		}
+
+		// 이미지
+		.section2_img {
+			order: -99;
+
+			> img {
+				max-width: 100%;
+				vertical-align: text-bottom;
+			}
+		}
+
+		// 운영시간
+		.info_market_time {
+			flex-direction: row;
+			width: 100%;
+			height: auto;
+			margin-top: -1px;
+			@include morem(padding,14px 0);
+			box-shadow: none;
+			transform: scale(1);
+
+			.title_time_info {
+				padding-bottom: 0;
+				margin-bottom: 0;
+				border-bottom: 0;
+				@include morem(font-size,15px);
+				
+				>span {
+					@include morem(font-size,15px);
+				}
+
+				& + .num_time {
+					position: relative;
+					@include morem(margin-left,23px);
+					@include morem(padding-left,24px);
+					
+					&:before {
+						position: absolute;
+						top:4px;
+						left: 0;
+						bottom: 4px;
+						width: 1px;
+						background-color: #fff;
+						content: '';
+					}
+				}
+			}
+		}
+	}
+
+	// Mart 
+	.main_mart_slider {
+		@include morem(margin,20px 0 0);
+
+		// 슬라이드
+		.item_slide {
+			height: 52vh;
+
+			&:before {
+				background-color: rgba(0, 0, 0, 0.5)
+			}
+
+			&:after {
+				display: none;
+			}
+		}
+
+		// 슬라이더 버튼
+		.btn_mart_slider {
+			&.btn_mart_prev {
+				@include sp_ico($ico-arrow_left_40x74);
+				@include morem(left,15px);
+			}
+			&.btn_mart_next {
+				@include sp_ico($ico-arrow_right_40x74);
+				@include morem(right,15px);
+			}
+		}
+
+		// 슬라이더 이미지 감싸고 있는 영역
+		.info_mart_wrap {
+			&:before {
+				display: none;
+			}
+
+			// 제목 부분
+			.title_slide_market {
+				@include morem(padding-bottom,13px);
+				@include morem(margin-bottom,13px);
+				font-weight: 600;
+
+				&:before {
+					@include morem(width,25px);
+					height: 1px;
+				}
+			}
+
+			// 운영시간
+			.name_market_time {
+				@include morem(font-size,20px);
+				font-weight: 500;
+			}
+
+			// 시간 부분
+			.desc_time {
+				@include morem(font-size,13px);
+				font-weight: 500;
+			}
+		}
+
+		// 페이저
+		.pager_slider {
+			display: block;
+			position: absolute;
+			right: 0;
+			bottom: 30px;
+			left: 0;
+			text-align: center;
+			z-index: 2;
+
+			.pager_bullet {
+				display: inline-block;
+				vertical-align: middle;
+
+				+.pager_bullet {
+					margin-top: 0;
+					margin-left: 7px;
+				}
+			}
+		}
+	}
+}
+
+// 태블릿
+@include media(tablet){
+	.main_top_banner {
+		&.type_slider {
+			@include morem(padding-left,35px);
+		}
+
+		.info_top_banner {
+			@include morem(padding,14px 19px);
+		}
+		
+		.name_banner {
+			@include morem(height,52px);
+			@include morem(font-size,26px);
+		}
+	}
+	
+	// 롯데몰
+	.section_mall  {
+		// 이미지 영역
+		.info_img_wrap {
+			width: 50vw;
+			@include morem(margin-top,40px);
+			@include morem(margin-bottom,0);
+		}
+
+		// 롯데몰 텍스트
+		.section2_lottemall {
+			font-size: 13vw;
+			margin-left: -4vw;
+		}
+
+		// 운영시간
+		.info_market_time {
+			flex-direction: column;
+			width: 30vw;
+			height: 26vw;
+			position: absolute;
+			top: 15vw;
+			left: -20vw;
+
+			.title_time_info {
+				@include morem(font-size,20px);
+				@include morem(margin-bottom,11px);
+				@include morem(padding-bottom,11px);
+				border-bottom: 1px solid #fff;
+
+				> br {
+					display: block !important;
+				}
+
+				+ .num_time {
+					margin-left: 0;
+					padding-left: 0;
+
+					&:before {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	// 몰
+	.main_mart_slider {
+		.item_slide {
+			height: 36vh;
+		}
+	}
+
+	// 시네마
+	.content_cinema {
+		margin: 0;
+		padding: 0 !important;
+		justify-content: center;
+
+		// 이미지
+		.cinema_img_area  {
+			img {
+				max-height: 65vw;
+			}
+		}
+
+		// 텍스트
+		.cinema_info_area {
+			@include morem(margin-left,30px);
+		}
+	}
+}
+
+@include media(phone){
+	.main_top_banner {
+		&.type_slider {
+			@include morem(padding-left,35px);
+		}
+		
+		.info_top_banner {
+			@include morem(padding,12px 16px);
+
+			.name_banner {
+				@include morem(height,46px);
+				@include morem(font-size,16px);
+			}
+
+			.day_info_banner {
+				@include morem(margin-top,15px);
+			}
+		}
+
+	}
+	// cinema
+	.content_cinema {
+		flex-direction: column;
+		margin-right: 0 !important;
+
+		//텍스트 부분
+		.cinema_info_area {
+			margin: 0;
+			@include morem(margin-right,35px);
+			order: -100;
+		}
+
+		// 이미지 부분
+		.cinema_img_area {
+			@include morem(margin-top,15px);
+			@include morem(margin-bottom,-45px);
+		}
+	}
+}
+
+// max1400
+@include media(pc){
+	// ******* 메인컨텐츠 *******
+	//mall 이미지
+	.section2_img {
+		img {
+			max-width: 45vh;
+		}
+	}
+
+	// 사이드 메뉴
+	.list_side_menu  {
+		.tooltip_side_menu  {
+			> p {
+				@include rem(font-size,13px);
+			}
+		}
+	}
+
+	// mall - 운영시간
+	.info_market_time {
+		top: 45vh;
+		right: 40vh;
+		width: 29vh;
+		height: 29vh;
+	}
+	
+	// mall -  영어 대빵 큰거
+	.section2_lottemall {
+		font-size: 24vh;
+	}
+
+	// mall 슬라이드
+	.item_slide {
+		&:hover,
+		&:focus {
+			.layer_slider_info {
+				display: none !important;
+			}
+		}
+	}
+}
+
+// min 1320
+@media screen and (min-width: 1320px) {
+	.main_bg_motion {
+		> div {
+			transition: opacity ease 1s, transform ease-out 12s;
+
+			&.on {
+				transform: scale(1.1) rotate(.001deg);
+			}
+		}
+	}
+}
+
+// 고객사
+@media all and (max-width: 1440px) {
+	.navi_content {
+		display: none;
+	}
+}
+
+// ****** 높이 ******** //
+@media screen and (max-height: 790px) {
+	.list_side_menu {
+		> li {
+			+ li {
+				margin-top: 3vh;
+			}
+		}
+	}
+
+	// 지점 정보
+	.wrap_market_info {
+		@include rem(padding,15px 40px);
+
+		.info_open_day {
+			@include rem(margin-top,15px);
+			@include rem(padding-top,10px);
+		}
+
+		.wrap_open_time {
+			@include rem(margin-top,15px);
+		}
+	}
+}

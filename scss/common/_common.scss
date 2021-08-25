@@ -1,0 +1,152 @@
+@charset "UTF-8";
+@import '_variable';
+@import '../mixin/_mixin';
+
+body {
+	&.no_scroll {
+		position: fixed;
+		overflow: hidden !important; 
+
+		#main {
+			width: 100vw;
+			height: 100vh;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+		}
+	}
+}
+
+button > span {
+	position: relative;
+}
+
+// 딤드
+.dimmed {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 2;
+	background-color: rgba(0,0,0,0.8);
+	
+	// side영역  Lnb 타입
+	&.type_munu {
+		opacity: 0;
+		visibility: hidden;
+		transition: all ease-in-out .8s;
+
+		&.on {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	&.trans {
+		background-color: transparent;
+	}
+}
+
+// 햄버거 메뉴
+.meun_hambuger {
+	display: inline-block;
+	overflow: hidden;
+	position: relative;
+	width: 26px;
+	height: 26px;
+	vertical-align: top;
+	text-align: right;
+
+	.center_line,
+	&:before,
+	&:after {
+		display: block;
+		height: 2px;
+		background-color: #333;
+		content: '';
+		transition: all ease-in-out .3s;
+		transform-origin: left;
+	}
+
+	.center_line {
+		width:20px;
+		margin: 8px 0;
+		margin-left: auto;
+		vertical-align: top;
+	}
+
+	&:before,
+	&:after {
+		width: 120%;
+	}
+}
+
+// 숨김처리용 셀렉트
+.hidden_select {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	opacity: 0;
+}
+
+// 모바일부터 적용
+@include media(mobile){
+	// 햄버거 메뉴
+	.meun_hambuger {
+		width: 21px;
+		height: 18px;
+		padding: 6px;
+		box-sizing: content-box;
+
+		&:after,
+		&:before,
+		.center_line {
+			height: 1px;
+		}
+
+		.center_line {
+			width: 16px;
+			margin: 6px 0;
+			margin-left: auto;
+		}
+
+		&.type_mo_gnb {
+			position: absolute;
+			top: 50%;
+			right: 9px;
+			margin-top: -15px;
+			// transform: translateY(-50%);
+		}
+
+		&:before,
+		&:after {
+			width: 100%;
+		}
+	}
+
+	.dimmed {
+		&.type_munu {
+			display: none;
+		}
+	}
+}
+
+@media all and (max-width: 1200px) {
+	.tablet_br {
+		display: block;
+	}
+}
+
+@media all and (min-width:1024px){	
+	.onlyPc{display:block !important}
+	.onlyMo{display:none !important}	
+	.mobile_br {display: none !important;}
+}
+
+@media all and (max-width:1023px){
+	.onlyPc{display:none !important}
+	.onlyMo{display:block !important}	
+}

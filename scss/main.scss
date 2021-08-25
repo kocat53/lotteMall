@@ -1,0 +1,844 @@
+@charset "UTF-8";
+@import 'common/_variable';
+@import 'mixin/_mixin';
+
+@import 'lib/_sprite_mixins';
+@import 'lib/_sp_ico';
+
+
+// 공통 - 페이저
+// 페이저
+.pager_slider {
+	> .pager_bullet{
+		display: block;
+		outline: none;
+		cursor: pointer;
+
+		&:before {
+			display: block;
+			@include rem(width,10px);
+			@include rem(height,10px);
+			background-color: #fff;
+			border-radius: 50%;
+			box-sizing: border-box;
+			margin: 0 auto;
+			content: '';
+		}
+
+		+ .pager_bullet {
+			margin-top: 13px;
+		}
+
+		&.active {
+			&:before {
+				@include rem(width,14px);
+				@include rem(height,14px);
+				border: 2px solid #dd282e;
+				background-color: transparent;
+			}
+		}
+	}
+}
+// 컨텐츠 이동 버튼
+#content_navigation {
+	position: fixed;
+	@include rem(bottom,60px);
+	@include rem(left,60px);
+	z-index: 2;
+	animation: mainNav .8s ease-in-out forwards;
+}
+
+// 본문 이동 링크
+.navi_content {
+	transition: all ease-in-out .5s;
+	
+	&.scroll {
+		>li {
+			color: #222;
+		}
+	}
+
+	&.hidden {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	> li {
+		font-family: 'Roboto';
+		@include rem(font-size,18px);
+		font-weight: 400;
+		color: #fff;
+		line-height: 1.1;
+		vertical-align: top;
+		cursor: pointer;
+		transition: all ease-in-out .5s;
+
+		&:before {
+			display: inline-block;
+			transition: all ease-in-out .5s;
+			width: 0;
+			height: 2px;
+			vertical-align: middle;
+			content: '';
+		}
+
+		+ li {
+			@include rem(margin-top,19px);
+		}
+
+		&.on {
+			&:before {
+				width: 15px;
+				height: 2px;
+				margin-top: -2px;
+				margin-right: 20px;
+				background-color: $point_red;
+			}
+		}
+	}
+}
+
+// 메인 탑 슬라이드
+.main_top_banner {
+	&.type_slider {
+		position: absolute;
+		right: $sideWidth;
+		bottom: 0;
+		@include rem(width,348px);
+	}
+	
+
+	&.type_intro {
+		display: none;
+		flex-direction: row-reverse;
+		position: absolute;
+		right: -100%;
+		bottom: 0;
+
+		&.animation {
+			display: flex;
+			animation: mainIntroBanner 2.1s  ease-in-out forwards;
+		}
+
+		.item_main_top_banner {
+			position: relative;
+
+			&:first-child {
+				z-index: 10;
+			}
+			
+			& + .item_main_top_banner {
+				margin-right: 1px;
+			}
+		}
+	}
+
+	.item_main_top_banner {
+		display: block;
+		@include rem(width,348px);
+	}
+
+	// 텍스트 영역
+	.info_top_banner {
+		position: relative;
+		@include rem(padding,33px 38px);
+		background-color: #fff;
+		box-sizing: border-box;
+	}
+	
+	// 제목
+	.name_banner {
+		display: block;
+		display: -webkit-box;
+		@include rem(height,73px);
+		@include rem(font-size,26px);
+		overflow: hidden;
+		font-weight: 500;
+		line-height: 1.45;
+		word-wrap: break-word;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	
+	// 날짜
+	.day_info_banner {
+		@include rem(margin-top,30px);
+		font-family: 'Roboto';
+		color: #666;
+	}
+
+	// 페이저
+	.pager_slider {
+		position: absolute;
+		top: 348px;
+		left: -44px;
+		z-index: 2;
+	}
+}
+
+// 컨테이너
+#container {
+	position: relative;
+	background-color: #f4f7fe;
+
+	.content_inner {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.section {
+		position: relative;
+		overflow: hidden;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+
+		// 마트소개 슬라이더 작업으로 인한 바텀 정렬로 변경
+		&.align_bottom {
+			.fp-tableCell {
+				vertical-align: bottom;
+			}
+		}
+	}
+}
+
+.main_bg_motion {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+
+	> div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-repeat: no-repeat;
+		//background-size: cover;
+		opacity: 0;
+		transition: opacity ease-in-out 1.2s;
+	
+		&.on {
+			opacity: 1;
+		}
+
+		&.main_bg1 {
+			background-image:url(../img/pc/main/main_bg.jpg);
+		}
+
+		&.main_bg2 {
+			background-image:url(../img/pc/main/main_bg2.jpg);
+		}
+
+		&.main_bg3 {
+			background-image:url(../img/pc/main/main_bg3.jpg);
+		}
+	}
+}
+
+// 1번째 컨텐츠
+.main1_content_box {
+	@include rem(margin-left,62px);
+	color: #fff;
+}
+
+// 홈 - 텍스트 영역
+.main_text_area {
+	.desc_sub_text {
+		@include rem(font-size,25px);
+		font-weight: 400;
+		letter-spacing: -1px;
+	}
+
+	.text_big_sub {
+		display: block;
+		@include rem(margin-top,13px);
+		@include font_eg(94px);
+		@include rem(font-size,94px);
+		font-weight: 500;
+		line-height: 1.1;
+		letter-spacing: -1.4px;
+	}
+}
+
+// 메인 공지사항
+.main_notice_area {
+	@include rem(width,370px);
+	@include rem(margin-top,31px);
+
+	.title_main_notice {
+		font-family: "Roboto";
+		@include rem(font-size,20px);
+		color: #fff;
+		font-weight: 400;
+	}
+}
+
+//  메인 - 공지사항
+.main_notice_wrap {
+	@include rem(height,25px);
+	overflow: hidden;
+	@include rem(margin-top,12px);
+}
+
+// 공지사항 목록
+.list_main_notice {
+	>li {
+		position: relative;
+
+		> a {
+			display: flex;
+			@include rem(width,362px);
+			color: #fff;
+			font-weight: 200;
+			align-items: center;
+		}
+
+		// 내용
+		.text_notice {
+			flex: 0 1 auto; /* flex 기본 값 */
+			@include rem(max-width,303px);
+			@include rem(font-size,18px);
+		}
+
+		// 아이콘
+		.ico_notice_arrow {
+			display: inline-block;
+			width: 17px;
+			height: 17px;
+			margin: 2px 0 0 20px;
+			border: 1px solid #fff;
+			border-radius: 50%;
+			box-sizing: border-box;
+			text-align: center;
+			
+			> i {
+				vertical-align: top;
+				margin-top: 1px;
+				font-size: 10px;
+				line-height: 1.3;
+			}
+		}
+	}
+}
+
+// 스크롤 마우스 영역
+.motion_scroll {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 40px;
+	text-align: center;
+	animation: moveMouse 3s ease-in-out infinite;
+
+	> div {
+		display: inline-block;
+	}
+
+	.scoll_text {
+		color: #fff;
+		font-family: 'Roboto';
+		font-size: 14px;
+		font-weight: 400;
+		margin-bottom: 16px;
+	}
+
+	.image_mouse {
+		position: relative;
+		width: 26px;
+		height: 45px;
+		margin: 0 auto;
+		border: 2px solid #fff;
+		box-sizing: border-box;
+		border-radius: 13px;
+
+		&:after,
+		&:before {
+			position: absolute;
+			top: 7px;
+			right: 8px;
+			left: 8px;
+			content: '';
+		}
+
+		&:after {
+			height: 16px;
+			border-radius: 5px;
+			background-color: rgba(255,255,255,0.2);
+		}
+
+		&:before {
+			height: 6px;
+			border-radius: 50%;
+			background-color: #fff;
+			animation: mouseWheel 2s forwards infinite;
+		}
+	}
+}
+
+// ***************************
+// 컨텐츠 타이틀영역 공통
+// ***************************
+@mixin leftAnimation(){
+	.section_motion  & {
+		animation: leftRight 1s ease-in-out both;
+	}
+}
+
+// 메인 - 컨텐츠 텍스트 공통
+.content_title_box {
+	color: #222;
+
+	// LOTTE MALL
+	.name_lotte_mall {
+		display: inline-block;
+		font-family: "Roboto";
+		@include rem(font-size,24px);
+		transform: translateX(-80%);
+		font-weight: 700;
+
+		@include leftAnimation();
+		animation-delay: .2s !important;
+	}
+
+	// 영어 부분
+	.title_main_contnet {
+		@include rem(margin-top,12px);
+		font-family: "Roboto";
+		@include rem(font-size,84px);
+		font-weight: 500;
+		letter-spacing: -1.8px;
+		line-height: 1;
+
+		@include leftAnimation();
+		animation-delay: .3s !important;
+	}
+
+	// 한글 굵은 텍스트
+	.desc_title {
+		display: block;
+		@include rem(margin-top,40px);
+		@include rem(font-size,22px);
+		font-weight: 500;
+		line-height: 1.5;
+
+		@include leftAnimation();
+		animation-delay: .4s !important;
+	}
+
+	// 설명
+	.desc_text {
+		@include rem(margin-top,8px);
+		font-weight: 300;
+		color: #666;
+		line-height: 1.8;
+
+		@include leftAnimation();
+		animation-delay: .5s !important;
+	}
+
+	// 더보기
+	.go_content {
+		position: relative;
+		display: inline-block;
+		@include rem(width,220px);
+		@include rem(margin-top,57px);
+		@include rem(padding,14px 30px 15px);
+		border: 1px solid $point_red;
+		@include rem(font-size,14px);
+		font-weight: 400;
+		color: $point_red;
+		box-sizing: border-box;
+
+		@include leftAnimation();
+		animation-delay: .7s !important;
+
+		&:after {
+			position: absolute;
+			@include rem(right,30px);
+			top: 50%;
+			margin-top: -5px;
+			border-style: solid;
+			border-width: 5px 0 5px 7px;
+			border-color: transparent transparent transparent $point_red;
+			content: '';
+			transition: .3s all ease-in-out;
+		}
+
+		&:hover:after,
+		&:focus:after {
+			@include rem(right,15px);
+		}
+	}
+
+	// 화살표 있는 라운드형 타입 [보관]
+	// .go_content_round {
+	// 	position: relative;
+	// 	display: inline-block;
+	// 	@include rem(width,120px);
+	// 	@include rem(height,120px);
+	// 	border:1px solid $point_red;
+	// 	border-radius: 50%;
+	// 	text-align: left;
+
+	// 	@include leftAnimation();
+	// 	animation-delay: .7s !important;
+
+	// 	&:before,
+	// 	&:after {
+	// 		position: absolute;
+	// 		content: '';
+	// 		transition: all ease-in-out .5s;
+	// 	}
+
+	// 	&:before {
+	// 		top: 50%;
+	// 		@include rem(width,50px);
+	// 		height: 1px;
+	// 		background-color: $point_red;
+	// 	}
+
+	// 	&:after {
+	// 		top: 50%;
+	// 		@include rem(left,49px);
+	// 		margin-top: -5px;
+	// 		border-top: 6px solid transparent;
+	// 		border-bottom: 0px solid transparent;
+	// 		border-left: 20px solid $point_red;
+	// 	}
+
+	// 	&:hover,
+	// 	&:focus {
+	// 		&:before {
+	// 			@include rem(width,75px);
+	// 		}
+
+	// 		&:after {
+	// 			@include rem(left,75px);
+	// 		}
+	// 	}
+	// }
+}
+
+// 롯데몰 소개 - 운영시간  안내
+.info_market_time {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 48vh;
+	right: 53vh;
+	z-index: 2;
+	width: 32vh;
+	height: 32vh;
+	color: #fff;
+	background-color: #2b2b33;
+	box-shadow: 9px 15px 35px rgba(0,0,0,0.25);
+	text-align: center;
+	transform: scale(0);
+	transition: all ease-in-out .5s;
+
+
+	.section_motion  & {
+		transform: scale(1);	
+	}
+
+	.title_time_info {
+		@include rem(margin-bottom,19px);
+		@include rem(padding-bottom,19px);
+		border-bottom: 2px solid #fff;
+		font-weight: 300;
+		@include rem(font-size,29px);
+
+
+		> span {
+			@include rem(font-size,22px);
+		}
+	}
+
+	.num_time {
+		font-family: 'Roboto';
+		@include rem(font-size,19px);
+		font-weight: 300;
+	}
+}
+
+// 에스컬레이터 이미지...
+.section2_img {
+	position: absolute;
+	top: 0;
+	right: $sideWidth;
+
+	img {
+		width: 100%;
+		max-width: 58vh;
+	}
+}
+
+// 롯데몰 텍스트
+.section2_lottemall {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	font-size: 28vh;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 800;
+	color: rgba(0,0,0,0.05);
+	text-align: center;
+	line-height: 0.8;
+	overflow: hidden;
+
+	&::selection {
+		background-color: transparent;
+	}
+
+	> span {
+		display: inline-block;
+		letter-spacing: -4px;
+	}
+}
+
+// 롯데몰 소개
+.section_mall {
+	border-bottom: 1px solid #ededed;
+
+	.main_mall_box {
+		margin-bottom: 30vh;
+	}	
+}
+
+
+// 롯데마트 소개
+.main_mart_box {
+	.title_main_contnet {
+		text-indent: -5px;
+	}
+
+	.go_content {
+		position: absolute;
+		right: 50%;
+		@include rem(bottom,3px);
+		@include rem(margin-right,-500px);
+	}
+}
+
+#main_footer.footer  {
+	overflow: visible;
+}
+
+// 마트소개 - 슬라이더
+.main_mart_slider {
+	position: relative;
+	margin-right: $sideWidth;
+	@include rem(margin-top,98px);
+
+	// 슬라이드 설정
+	.item_slide {
+		position: relative;
+		height: 45vh;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&:after,
+		&:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			content: '';
+		}
+
+		&:before {
+			background-color: rgba(0,0,0,0.3);
+		}
+
+		&:after {
+			background: linear-gradient(to bottom, transparent 0%,rgba(0,0,0,.7) 81%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		}
+
+		img {
+			width: 100%;
+			max-width: 65vh;
+		}
+
+		&:hover,
+		&:focus {
+			.layer_slider_info {
+				display: flex;
+			}
+		}
+	}
+
+	// 버튼 설정
+	.btn_mart_slider {
+		position: absolute;
+		top: 50%;
+		right: 0;
+		z-index: 2;
+		width: 38px;
+		height: 74px;
+		background-image: url(../img/pc/sprite.png);
+		background-repeat: no-repeat;
+		color: #fff;
+		@include rem(font-size,80px);
+		transform: translateY(-50%);
+
+		&.btn_mart_prev {
+			@include rem(left,60px);
+			background-position: 0 -90px;
+		}
+
+		&.btn_mart_next {
+			@include rem(right,60px);
+			background-position:-45px -90px;
+		}
+	}
+
+	// 운영시간 안내
+	.info_mart_wrap {
+		position: relative;
+		z-index: 2;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+
+		&:before {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			z-index: 5;
+			content: '';
+			background-color: #f4f7fe;
+			transition: width ease-in-out .5s;
+			transition-delay: .5s;
+		}
+
+		.section_motion  & {
+			&:before {
+				width: 0;
+			}
+		}
+
+		.title_slide_market {
+			position: relative;
+			@include rem(margin-bottom,24px);
+			@include rem(padding-bottom,26px);
+			font-family: 'Roboto';
+			@include rem(font-size,28px);
+			font-weight: 500;
+			line-height: 1.1;
+
+			&:before {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 50px;
+				height: 2px;
+				margin: 0 auto;
+				background-color: #fff;
+				content: '';
+			}
+		}
+
+		.name_market_time {
+			@include rem(font-size,28px);
+			font-weight: 300;
+		}
+
+		.desc_time {
+			@include rem(margin-top,8px);
+			font-family: "Roboto";
+			@include rem(font-size,18px);
+			font-weight: 300;
+		}
+	}
+
+	// 마우스 오버시 나오는 레이어
+	.layer_slider_info {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 3;
+		background-color: rgba(0,0,0,0.8);
+
+		.inner {
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			@include rem(width,200px);
+			@include rem(height,200px);
+			@include rem(padding,0 10px);
+			border: 1px solid #fff;
+			box-sizing: border-box;
+			text-align: center;
+
+			> p {
+				color: #fff;
+				line-height: 1.9;
+				font-weight: 300;
+			}
+		}
+	}
+
+	.pager_slider {
+		display: none;
+	}
+}
+
+// 시네마 소개
+.content_cinema {
+	display: flex;
+	justify-content: left;
+
+	.cinema_img_area {
+		flex: 0 1 auto;
+		position: relative;
+		z-index: 3;
+		align-self: center;
+		text-align: right;
+		box-shadow: 0 3px 16px rgba(0, 0, 0, 0.3);
+
+		img {
+			max-height: 88vh;
+		}
+	}
+
+	.cinema_info_area {
+		position: relative;
+		z-index: 2;
+		@include rem(margin-left,100px);
+
+		.title_main_contnet {
+			@include rem(margin-top,12px);
+			letter-spacing: -2.9px;
+		}
+
+		// .go_content_round {
+		// 	@include rem(margin-top,55px);
+		// }
+	}
+}
+
+@import 'lib/_animate';
+@import '_mid_main'

@@ -1,0 +1,9 @@
+@import '../mixin/mixin';
+
+$point_red : #ed1c23;
+$sideWidth : 70px;
+
+@mixin font_eg($size){
+	font-family:  'Roboto' ,sans-serif;
+	@include rem(font-size,$size);
+}
