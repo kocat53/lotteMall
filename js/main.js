@@ -92,7 +92,43 @@ function mainPageSlider() {
 		$('.main_top_slider').css('padding-left', 0);
 		$('.pager_main').addClass('hide');
 	}
-	var mainTopSlider = new Swiper('.main_top_slider .swiper-container', {
+
+	var mainMartSlider = new Swiper('.main_mart_slider .swiper-container', {
+		loop: true,
+		speed: 400,
+		autoplay: {
+			delay: 5000,
+		},
+		slidesPerView: 3,
+		spaceBetween: 0,
+		pagination: {
+			el: '.pager_mall',
+			type: 'bullets',
+			bulletClass:'pager_bullet',
+			bulletActiveClass:'active',
+			clickable: true
+		},
+		breakpoints: {
+			980: {
+				slidesPerView: 2,
+			},
+			650: {
+				slidesPerView: 1,
+			},
+		},
+		navigation: {
+			nextEl: '.btn_mart_next',
+			prevEl: '.btn_mart_prev',
+		},
+		keyboard: {
+			enabled: true,
+			onlyInViewport: false,
+		},
+	});
+}
+
+function mainBannerSlide(){
+		var mainTopSlider = new Swiper('.main_top_slider .swiper-container', {
 		loop: ($item == 1) ? false : true,
 		speed: 400,
 		grabCursor: ($item == 1) ? false : true,
@@ -126,39 +162,6 @@ function mainPageSlider() {
 			bulletClass:'pager_bullet',
 			bulletActiveClass:'active',
 			clickable: true
-		},
-		keyboard: {
-			enabled: true,
-			onlyInViewport: false,
-		},
-	});
-
-	var mainMartSlider = new Swiper('.main_mart_slider .swiper-container', {
-		loop: true,
-		speed: 400,
-		autoplay: {
-			delay: 5000,
-		},
-		slidesPerView: 3,
-		spaceBetween: 0,
-		pagination: {
-			el: '.pager_mall',
-			type: 'bullets',
-			bulletClass:'pager_bullet',
-			bulletActiveClass:'active',
-			clickable: true
-		},
-		breakpoints: {
-			980: {
-				slidesPerView: 2,
-			},
-			650: {
-				slidesPerView: 1,
-			},
-		},
-		navigation: {
-			nextEl: '.btn_mart_next',
-			prevEl: '.btn_mart_prev',
 		},
 		keyboard: {
 			enabled: true,
@@ -211,16 +214,18 @@ function mainAnimation() {
 
 	if ($windowWidth > 1201) {
 		// 메인 top 슬라이드
-		var $introLength = $('.main_top_banner.type_intro > .item_main_top_banner').length;
+		var $introLength = $('.main_top_banner.type_intro  .item_main_top_banner').length;
 		if ($introLength > 1) {
 			$('.main_top_banner.type_intro').addClass('animation');
 			setTimeout(function() {
-				$('.main_top_banner.type_intro > .item_main_top_banner:gt(0)').each(function () {
+				$('.main_top_banner.type_intro  .item_main_top_banner:gt(0)').each(function () {
 					var $index = $(this).index();
 					TweenMax.staggerTo($(this), 0.8, {
 						x: ($index * 101 + '%'),
 						ease: Circ.easeOutm,
 						onComplete: function () {
+							// 여기를 손보면 되겠군
+							mainBannerSlide();
 							$('.main_top_banner.type_intro').remove();
 						},
 					}, 0.4);

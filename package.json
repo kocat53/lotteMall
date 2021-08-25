@@ -17,14 +17,14 @@
   },
   "homepage": "https://github.com/kocat53/parker#readme",
   "devDependencies": {
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.27.5",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
     "gulp-concat": "^2.6.1",
     "gulp-php2html": "^0.3.3",
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
-    "gulp.spritesmith": "^6.10.1",
+    "gulp.spritesmith": "^6.12.1",
     "vinyl-buffer": "^1.0.1"
   },
   "browserslist": [

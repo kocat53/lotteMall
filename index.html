@@ -19,7 +19,6 @@
 		<a href="#gnb">주메뉴 바로가기</a>
 		<a href="#container">본문 바로가기</a>
 		<a href="#footer">사이트 정보 및 패밀리사이트 영역 바로가기</a>
-		<!-- 주석 -->
 	</div>
 	<div id="wrap">
 		<!-- 헤더 -->
@@ -226,11 +225,11 @@
 		<!-- 본문 이동 링크 -->
 		<nav id="content_navigation" class="onlyPc">
 			<h2 class="blind">컨텐츠 이동 목록</h2>
-			<ul class="navi_content">
-				<li data-full="Home" role="button">Home</li>
-				<li data-full="Mall" role="button">Mall</li>
-				<li data-full="Mart" role="button">Mart</li>
-				<li data-full="Cinema" role="button">Cinema</li>
+			<div class="navi_content">
+				<li class="item_navi" data-full="Home" role="button">Home</li>
+				<li class="item_navi" data-full="Mall" role="button">Mall</li>
+				<li class="item_navi" data-full="Mart" role="button">Mart</li>
+				<li class="item_navi" data-full="Cinema" role="button">Cinema</li>
 			</ul>
 			<hr>
 		</nav>
@@ -253,10 +252,10 @@
 						<strong class="text_big_sub">Find Your Premium<br>Life Style</strong>
 					</article>
 					<!-- 최상단 우측 아래 슬라이드 -->
-					<article class="main_top_banner type_slider main_top_slider" aria-hidden="true">
+					<article class="main_top_banner type_intro type_slider main_top_slider" aria-hidden="true">
 						<div class="swiper-container">
 							<div class="swiper-wrapper">
-								<!-- <a href="#;" class="item_main_top_banner swiper-slide" title="페이지 이동">
+								<a href="#;" class="item_main_top_banner swiper-slide" title="페이지 이동">
 									<img src="img/pc/main/slider3.jpg" alt="">
 									<div class="info_top_banner">
 										<strong class="name_banner">L.pay로 결제시 L.POINT 20,000P 추가 적립</strong>
@@ -275,7 +274,7 @@
 											<span>05.18 ~ 06.10</span>
 										</p>
 									</div>
-								</a> -->
+								</a>
 								<a href="#;" class="item_main_top_banner swiper-slide" title="페이지 이동">
 									<img src="img/pc/main/slider1.jpg" alt="">
 									<div class="info_top_banner">
@@ -316,8 +315,8 @@
 					</article>
 				</section>
 				<!-- 인트로 나오기용.. -->
-				<article class="main_top_banner type_intro ">
-					<!-- <a href="#;" class="item_main_top_banner swiper-slide" title="페이지 이동">
+				<!-- <article class="main_top_banner type_intro ">
+					<a href="#;" class="item_main_top_banner swiper-slide" title="페이지 이동">
 						<img src="img/pc/main/slider3.jpg" alt="">
 						<div class="info_top_banner">
 							<strong class="name_banner">L.pay로 결제시 L.POINT 20,000P 추가 적립</strong>
@@ -336,7 +335,7 @@
 								<span>05.18 ~ 06.10</span>
 							</p>
 						</div>
-					</a> -->
+					</a>
 					<a href="#;" class="item_main_top_banner swiper-slide" style="z-index:2" title="페이지 이동">
 						<img src="img/pc/main/slider1.jpg" alt="">
 						<div class="info_top_banner">
@@ -347,7 +346,7 @@
 							</p>
 						</div>
 					</a>
-				</article>
+				</article> -->
 				<div class="motion_scroll onlyPc" aria-hidden="true">
 					<div>
 						<div class="scoll_text">Scroll</div>
@@ -1058,8 +1057,8 @@
 		</nav>
 	</div>
 </body>
-<script src="js/TweenMax.min.js"></script>
 <script src="js/jquery.js"></script>
+<script src="js/TweenMax.min.js"></script>
 <script src="js/fullpage.min.js"></script>
 <script src="js/swiper.min.js"></script>
 <script src="js/bodyScrollLock.min.js"></script>

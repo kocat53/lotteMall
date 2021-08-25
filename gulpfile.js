@@ -1,4 +1,4 @@
-var gulp = require('gulp'),
+var {task , src, dest, watch ,parallel} = require('gulp'),
 	sass = require('gulp-sass'),
 	browsersync = require('browser-sync').create(),
 	concat = require('gulp-concat'),
@@ -44,30 +44,29 @@ function browserSyncReload(done) {
 }
 
 function scss(done) {
-	gulp.src(Paths.scss, { sourcemaps: true })
+	src(Paths.scss, { sourcemaps: true })
 		.pipe(sass({
 			outputStyle: 'expanded', // nested, expanded, compact, compressed
 			indentType: 'tab',
 			precision:3,
 			indentWidth: 1,
-			// linefeed: 'cr',
 		}).on('error', sass.logError))
 		.pipe(autoprefixer({
 			cascade: false
 		}))
-		.pipe(gulp.dest('./css', { sourcemaps: './' }))
+		.pipe(dest('./css', { sourcemaps: './' }))
 		.pipe(browsersync.stream());
 	done();
 }
 
-gulp.task('build', function () {
-	gulp.src("./*.php")
+task('build', function () {
+	src("./*.php")
 		.pipe(php2html())
-	.pipe(gulp.dest("./dist"));
+	.pipe(dest("./dist"));
 })
 
-gulp.task('mainjs', function () {
-	return gulp.src([
+task('mainjs', function () {
+	return src([
 		'js/jquery.js',
 		'js/TweenMax.min.js',
 		'js/swiper.min.js',
@@ -77,13 +76,13 @@ gulp.task('mainjs', function () {
 	], { sourcemaps: true }) 
 		.pipe(concat('main.js')) 
 		.pipe(uglify())
-		.pipe(gulp.dest('dist/js',{ sourcemaps: './' }));
+		.pipe(dest('dist/js',{ sourcemaps: './' }));
 });
 
-gulp.task('sprite', function(done) {
+task('sprite', function(done) {
 	var folders = getFolders(Paths.img + Paths.mobile + Paths.sprite);
 	folders.map(function(folder) {
-		var spriteData = gulp.src(Paths.sprite + folder + '/*.png', {cwd: Paths.img + Paths.mobile}).pipe(spritesmith({
+		var spriteData = src(Paths.sprite + folder + '/*.png', {cwd: Paths.img + Paths.mobile}).pipe(spritesmith({
 			imgPath: '../' + Paths.img + Paths.mobile + 'sp_' + folder + '.png',
 			imgName: 'sp_' + folder + '.png',
 			cssName: '_sp_' + folder + '.scss',
@@ -99,16 +98,16 @@ gulp.task('sprite', function(done) {
 
 		spriteData.img
 			.pipe(buffer())
-			.pipe(gulp.dest(Paths.img + Paths.mobile));
-		spriteData.css.pipe(gulp.dest(Paths.scssSrc +Paths.lib));
+			.pipe(dest(Paths.img + Paths.mobile));
+		spriteData.css.pipe(dest(Paths.scssSrc +Paths.lib));
 	});
 	done();
 });
 
 // Watch files
 function watchFiles() {
-	gulp.watch("./scss/**/*.scss", scss);
-	gulp.watch(
+	watch("./scss/**/*.scss", scss);
+	watch(
 		[
 			Paths.html,
 			Paths.css,
@@ -118,6 +117,6 @@ function watchFiles() {
 	)
 }
 
-const watch = gulp.parallel(broserLive,watchFiles);
+const bs = parallel(broserLive,watchFiles);
 exports.sass = scss;
-exports.bs = watch;
+exports.bs = bs;
