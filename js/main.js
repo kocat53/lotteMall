@@ -87,12 +87,6 @@ function mainImg() {
 
 // 메인메뉴 1페이지 슬라이드
 function mainPageSlider() {
-	var $item = $('.main_top_slider').find('.item_main_top_banner').length;
-	if ($item == 1) {
-		$('.main_top_slider').css('padding-left', 0);
-		$('.pager_main').addClass('hide');
-	}
-
 	var mainMartSlider = new Swiper('.main_mart_slider .swiper-container', {
 		loop: true,
 		speed: 400,
@@ -128,6 +122,8 @@ function mainPageSlider() {
 }
 
 function mainBannerSlide(){
+		var $item = $('.main_top_slider').find('.item_main_top_banner').length;
+		console.log('아이템', $item);
 		var mainTopSlider = new Swiper('.main_top_slider .swiper-container', {
 		loop: ($item == 1) ? false : true,
 		speed: 400,
@@ -218,15 +214,15 @@ function mainAnimation() {
 		if ($introLength > 1) {
 			$('.main_top_banner.type_intro').addClass('animation');
 			setTimeout(function() {
-				$('.main_top_banner.type_intro  .item_main_top_banner:gt(0)').each(function () {
-					var $index = $(this).index();
+				$('.main_top_banner.type_intro  .item_main_top_banner').each(function () {
+					var $index = $(this).index()+1;
 					TweenMax.staggerTo($(this), 0.8, {
-						x: ($index * 101 + '%'),
+						x: ($index * ($index == 1 ?  202 : 101) + '%'),
 						ease: Circ.easeOutm,
 						onComplete: function () {
-							// 여기를 손보면 되겠군
+							$('.item_main_top_banner').removeAttr('style')
+							$('.main_top_slider').removeClass('type_intro').addClass('type_slider')
 							mainBannerSlide();
-							$('.main_top_banner.type_intro').remove();
 						},
 					}, 0.4);
 				});	
